@@ -1,6 +1,13 @@
 # plots the boxplots of alpha diversity measures
 
+library(readr)
+library(ggpval)
+library(ggplot2)
 
+# fetches the dataset
+shannonOBS$groups<-read_csv("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/Figures/shannonOBS.csv")
+
+# reorders factors
 shannonOBS$groups <- factor(shannonOBS$new2, levels = c("14.COL.Y",
                                                         "14.COL.C",
                                                         "7.COL.Y",
@@ -16,10 +23,9 @@ shannonOBS$groups <- factor(shannonOBS$new2, levels = c("14.COL.Y",
                                                         "7.IL.Y",
                                                         "7.IL.C",
                                                         "0.IL.B"))
-shannonOBS$gut_site
 
 
-library(ggpval)
+# creates the body of the plot
 plt <- ggplot(shannonOBS, aes(x=groups, y=value, color=feed)) +
   geom_boxplot(fill=c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                       "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
@@ -33,6 +39,8 @@ plt <- ggplot(shannonOBS, aes(x=groups, y=value, color=feed)) +
                fatten = 1.5)  + 
   ylim(1.6,8) + 
   coord_flip()
+
+# adds p-values
 m<-add_pval(plt, pairs = list(c(1,2), 
                            c(3,4),
                            c(6,7),
@@ -54,6 +62,8 @@ m<-add_pval(plt, pairs = list(c(1,2),
   theme(axis.line = element_line(colour = "grey"))+
   theme(axis.line.x.bottom = element_line(colour = "grey"))
 m
+
+# saves the plot to HDD
 ggsave("diversity.png",device = "png", 
        plot = m, 
        dpi = 300, 
