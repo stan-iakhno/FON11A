@@ -5,7 +5,7 @@ library(ggpval)
 library(ggplot2)
 
 # fetches the dataset
-shannonOBS$groups<-read_csv("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/Figures/shannonOBS.csv")
+shannonOBS<-read_csv("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/Figures/shannonOBS.csv")
 
 # reorders factors
 shannonOBS$groups <- factor(shannonOBS$new2, levels = c("14.COL.Y",
@@ -59,7 +59,7 @@ m<-add_pval(plt, pairs = list(c(1,2),
   theme(panel.grid.minor = element_blank())+
   theme(panel.grid.major.y =element_line(linetype = 2))+
   theme(axis.line.y.left =  element_blank())+
-  theme(axis.line.y.bottom = element_line(colour = "grey"))+
+  theme(axis.line.y = element_line(colour = "grey"))+
   theme(axis.text.y = element_text(color = c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
