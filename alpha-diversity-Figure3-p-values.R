@@ -24,7 +24,6 @@ shannonOBS$groups <- factor(shannonOBS$new2, levels = c("14.COL.Y",
                                                         "7.IL.C",
                                                         "0.IL.B"))
 
-
 # creates the body of the plot
 plt <- ggplot(shannonOBS, aes(x=groups, y=value, color=feed)) +
   geom_boxplot(fill=c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
@@ -54,20 +53,25 @@ m<-add_pval(plt, pairs = list(c(1,2),
   theme_bw(base_size = 12, base_family = 'serif')+
   labs(y='Shannon index')+
   theme(axis.title.y = element_blank())+
-  theme(axis.text.y = element_text(face = "bold"))+
+  theme(axis.text.y = element_text(face = 'plain'))+
   theme(panel.grid.major.x = element_blank())+
   theme(panel.border = element_blank()) +
   theme(panel.grid.minor = element_blank())+
   theme(panel.grid.major.y =element_line(linetype = 2))+
-  theme(axis.line = element_line(colour = "grey"))+
-  theme(axis.line.x.bottom = element_line(colour = "grey"))
+  theme(axis.line.y.left =  element_blank())+
+  theme(axis.line.y.bottom = element_line(colour = "grey"))+
+  theme(axis.text.y = element_text(color = c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
+                                             "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
+                                             "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
+                                   hjust = 1,family = 'serif', size = 8))+
+  theme(axis.ticks.y = element_line(colour = "grey"))
 m
 
 # saves the plot to HDD
-ggsave("diversity.png",device = "png", 
+ggsave("diversity-colours.png",device = "png", 
        plot = m, 
        dpi = 300, 
-       width = 9, height = 9, 
+       width = 8.5, height = 8.5, 
        units = "cm")
 
 
