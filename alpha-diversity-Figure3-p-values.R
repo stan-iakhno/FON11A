@@ -29,9 +29,9 @@ plt <- ggplot(shannonOBS, aes(x=groups, y=value, color=feed)) +
   geom_boxplot(fill=c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                       "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                       "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
-                      color=c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
-                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
-                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
+               color=c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
+                       "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
+                       "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
                alpha=0.25, 
                lwd=0.4,
                outlier.shape = NA,
@@ -41,17 +41,17 @@ plt <- ggplot(shannonOBS, aes(x=groups, y=value, color=feed)) +
 
 # adds p-values
 m<-add_pval(plt, pairs = list(c(1,2), 
-                           c(3,4),
-                           c(6,7),
-                           c(8,9),
-                           c(11,12),
-                           c(13,14)), 
+                              c(3,4),
+                              c(6,7),
+                              c(8,9),
+                              c(11,12),
+                              c(13,14)), 
             test='wilcox.test', 
             barheight = 0.1,
             pval_star = F,
             pval_text_adj = 1.5, textsize = 9) +
   theme_bw(base_size = 12, base_family = 'serif')+
-  labs(y='Shannon index')+
+  labs(title ='Shannon diversity index')+
   theme(axis.title.y = element_blank())+
   theme(axis.text.y = element_text(face = 'plain'))+
   theme(panel.grid.major.x = element_blank())+
@@ -63,8 +63,10 @@ m<-add_pval(plt, pairs = list(c(1,2),
   theme(axis.text.y = element_text(color = c("#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00",
                                              "#009E73","#CC79A7","#009E73","#CC79A7","#E69F00"),
-                                   hjust = 1,family = 'serif', size = 8))+
-  theme(axis.ticks.y = element_line(colour = "grey"))
+                                   hjust = 1,family = 'serif', size = 10))+
+  theme(axis.ticks.y = element_line(colour = "grey"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(axis.title = element_blank(), plot.title = element_text(size = 12))
 m
 
 # saves the plot to HDD
@@ -73,7 +75,3 @@ ggsave("diversity-colours.png",device = "png",
        dpi = 300, 
        width = 8.5, height = 8.5, 
        units = "cm")
-
-
-
-
