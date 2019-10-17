@@ -3,6 +3,9 @@ ps.top20
 library(ggplot2)
 library(reshape2)
 ################
+#fetches the ps object
+
+rab_LLmrgMEDIANaggFamily <- readRDS("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/R_files_fon011/PS.APR.19/getting_there/ABUND/rab_LLmrgMEDIANaggPhy.rds")
 
 top20 <- names(sort(taxa_sums(rab_LLmrgMEDIANaggPhy), decreasing=TRUE))[1:6]
 ps.top20 <- transform_sample_counts(rab_LLmrgMEDIANaggPhy, function(OTU) OTU/sum(OTU))
