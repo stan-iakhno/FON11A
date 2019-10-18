@@ -36,3 +36,4 @@ ggsave("hist001.png",device = "png",
        dpi = "retina", 
        width = 18, 
        height = 7, 
+       units= "cm")
