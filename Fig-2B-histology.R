@@ -24,16 +24,19 @@ pl01<-ggplot(ft, aes(x=variable, y=Freq, fill=value))+
   facet_grid(.~diet)+
   coord_flip()+
   labs(y = "Frequency", x="Histology analysis")+
-  theme_minimal()+
-  theme(legend.title = element_text(hjust = 0.5))+
-  labs(fill="Histology score", title = "B")
-  
-        
+  theme_minimal(base_size = 14,base_family = 'serif')+
+ # theme(legend.title = element_text(hjust = 0.5, vjust = 0.5), legend.title.align = 0.)+
+  labs(fill="Histology score")+
+  theme(axis.title.y = element_blank())+
+  theme(legend.direction = "horizontal",legend.position = c(0.25, 1.15))+
+  theme(legend.text = element_text(colour="black", size=10,vjust = 0.5),
+        legend.key.size = unit(2, 'mm'))
+
+
 pl01 
 #save the plot on the HDD
 ggsave("hist001.png",device = "png", 
        plot = pl01, 
-       dpi = "retina", 
-       width = 18, 
-       height = 7, 
-       units= "cm")
+       dpi = 300, 
+       width = 14, 
+       height = 7, units = 'cm')
