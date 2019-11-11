@@ -1,4 +1,3 @@
-```
 # plots correaltion scatter-plot with the abline: colonic butyrate ~ liver 
 # CONTROLS
 #  Coefficients:
@@ -60,4 +59,3 @@ ggsave("cor03D-controls-but-liver.png",device = "png",
        width = 8, 
        height = 8, 
        units = "cm")
-```
