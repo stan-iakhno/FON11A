@@ -2,7 +2,7 @@ library(readxl)
 library(readr)
 library(ggpval)
 library(ggplot2)
-
+library(Hmisc)
 
 #pull the metadata file
 butyrate_CD <- read_excel("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/Caroline_fon11a/butyrate-CD.xlsx")
