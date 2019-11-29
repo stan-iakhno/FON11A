@@ -3,6 +3,9 @@ library(readr)
 library(ggpval)
 library(ggplot2)
 library(Hmisc)
+library(tidyverse)
+library(hrbrthemes)
+library(viridis)
 
 #pull the metadata file
 butyrate_CD <- read_excel("C:/Users/stia/OneDrive - Norwegian University of Life Sciences/FOODSofNORWAY/FON_011/FON_011a/1_Manuscript/Caroline_fon11a/butyrate-CD.xlsx")
@@ -42,10 +45,12 @@ pltm<-add_pval(plt, pairs = list(c(1,2),c(3,4)),
                heights = c(850,850),
                textsize = 9, pval_text_adj = 30)
 
-n<-pltm + theme_bw(base_size = 12, base_family = 'serif')+
-    labs(title ='Colonic CD in µm')+
+n<-pltm + theme(base_size = 12, base_family = 'serif')+
+
+  labs(title ='Colonic CD in µm')+
   theme(axis.title.y = element_blank())+
-  theme(axis.text.y = element_text(face = 'plain'))+
+  theme(axis.text.y = element_text(face = 'plain', size = 12))+
+  theme(axis.text.x = element_text(face = 'plain', size = 12))+
   theme(panel.grid.major.x = element_blank())+
   theme(panel.border = element_blank()) +
   theme(panel.grid.minor = element_blank())+
@@ -54,28 +59,14 @@ n<-pltm + theme_bw(base_size = 12, base_family = 'serif')+
   theme(axis.line.y = element_line(colour = "grey"))+
   theme(axis.ticks.y = element_line(colour = "grey"))+
   theme(plot.title = element_text(hjust = 0.5))+
-  theme(axis.title = element_blank(), plot.title = element_text(size = 12))
+  theme(axis.title = element_blank(), plot.title = element_text(size = 12))+
+  geom_jitter(aes(group=grouper) ,
+              size=0.8 , show.legend = F,
+              width = 0.15)
 
 n
-ggsave("diet-CD.png",device = "png", 
+ggsave("Fig3A.png",device = "png", 
        plot = n, 
        dpi = 300, 
        width = 7.5, height = 5.5, 
        units = "cm")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
