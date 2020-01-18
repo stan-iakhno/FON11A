@@ -11,6 +11,7 @@ filtpath <- file.path(path, "filtered") # Filtered files go into the filtered/ s
 i <- as.vector(args)
 outlist=list()
 outlist2=list()
+
 for (i in list.files(path, pattern = "_1.subsample.fastq.gz")){
   fns <- list.files(path, pattern = i)
   out<-filterAndTrim(fwd=file.path(path, fns), filt=file.path(filtpath, fns),
@@ -48,7 +49,6 @@ track <- cbind(sapply(outlist2, function(x){as.numeric(x[1])}),
                sapply(outlist2, function(x){as.numeric(x[2])}),
                rowSums(seqtab))
 colnames(track) <- c("input", "filtered", "nonchim")
-rownames(track) <- sample.names
 head(track)
 write.csv(track, "track.csv")
 
